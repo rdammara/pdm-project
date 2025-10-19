@@ -1,0 +1,151 @@
+# Main Configuration File for Predictive Maintenance Project
+
+# Feature Engineering Settings
+feature_engineering:
+  # Window sizes for rolling features (in time steps)
+  window_size: 50
+  rolling_windows: [10, 20, 50]
+  
+  # Statistical features to compute
+  statistical_features:
+    - mean
+    - std
+    - min
+    - max
+    - skew
+    - kurtosis
+  
+  # Trend features
+  compute_trends: true
+  trend_window: 20
+  
+  # Lag features
+  lag_features: [1, 2, 5, 10]
+
+# Data Processing Settings
+data_processing:
+  # Missing value handling
+  missing_value_strategy: 'interpolate'  # Options: interpolate, forward_fill, drop
+  
+  # Outlier detection
+  outlier_detection: true
+  outlier_method: 'iqr'  # Options: iqr, zscore
+  outlier_threshold: 3
+  
+  # RUL computation
+  rul_clip_max: 150  # Maximum RUL value to clip
+  
+  # Train/test split
+  test_size: 0.2
+  validation_size: 0.1
+  random_state: 42
+
+# Model Settings - RUL Regression
+modeling:
+  rul_regression:
+    model_type: 'xgboost'
+    
+    # XGBoost hyperparameters
+    params:
+      max_depth: 6
+      learning_rate: 0.1
+      n_estimators: 100
+      min_child_weight: 1
+      subsample: 0.8
+      colsample_bytree: 0.8
+      gamma: 0
+      reg_alpha: 0
+      reg_lambda: 1
+      objective: 'reg:squarederror'
+      random_state: 42
+    
+    # Cross-validation
+    cv_folds: 5
+    
+    # Early stopping
+    early_stopping_rounds: 10
+    
+  # Failure Classification
+  failure_classification:
+    model_type: 'xgboost'
+    
+    # Prediction horizon (days before failure)
+    prediction_horizon_days: 30
+    
+    # XGBoost hyperparameters
+    params:
+      max_depth: 4
+      learning_rate: 0.05
+      n_estimators: 200
+      min_child_weight: 1
+      subsample: 0.8
+      colsample_bytree: 0.8
+      gamma: 0
+      reg_alpha: 0
+      reg_lambda: 1
+      scale_pos_weight: 1  # Adjust for class imbalance
+      objective: 'binary:logistic'
+      random_state: 42
+    
+    # Cross-validation
+    cv_folds: 5
+    
+    # Early stopping
+    early_stopping_rounds: 10
+    
+    # Probability threshold for classification
+    threshold: 0.5
+
+# Evaluation Settings
+evaluation:
+  # Regression metrics
+  regression_metrics:
+    - rmse
+    - mae
+    - r2
+    - mape
+  
+  # Classification metrics
+  classification_metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1
+    - roc_auc
+  
+  # Custom PdM metrics
+  pdm_metrics:
+    early_detection_window: 10  # days
+    compute_advance_warning: true
+
+# Reporting Settings
+reporting:
+  # Output formats
+  save_formats: ['html', 'pdf', 'excel']
+  
+  # Figures
+  figure_format: 'png'
+  figure_dpi: 300
+  
+  # Feature importance
+  top_n_features: 20
+  
+  # SHAP analysis
+  compute_shap: true
+  shap_sample_size: 100
+
+# Paths
+paths:
+  raw_data: 'data/raw'
+  interim_data: 'data/interim'
+  processed_data: 'data/processed'
+  models: 'models'
+  reports: 'reports'
+  figures: 'reports/figures'
+  evaluation: 'reports/evaluation'
+
+# Logging
+logging:
+  level: 'INFO'  # Options: DEBUG, INFO, WARNING, ERROR
+  log_file: 'logs/pdm_pipeline.log'
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
