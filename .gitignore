@@ -152,3 +152,5 @@ reports/evaluation/*
 # Config files with sensitive information
 config/database_credentials.json
 config/secrets.json
+config/database_config.yaml
+
