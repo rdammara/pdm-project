@@ -1,0 +1,23 @@
+random_seed: 42
+time_index: timestamp
+id_col: machine_id
+targets:
+  rul: RUL
+  cof: CoF
+freq: 1min
+sequence:
+  window: 20
+  stride: 1
+scaler:
+  type: standard
+  with_mean: true
+  with_std: true
+exclude_cols:
+- timestamp
+- machine_id
+- __line
+- RUL
+- CoF
+- breakdown
+- failure
+- is_failure

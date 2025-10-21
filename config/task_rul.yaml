@@ -1,0 +1,14 @@
+task: RUL
+labeling:
+  failure_col: breakdown
+  drop_tail_nan_rul: true
+  units: minutes
+split:
+  method: time_series_split
+  n_splits: 3
+metrics:
+- rmse
+- mae
+- r2
+- nasa
+- silhouette

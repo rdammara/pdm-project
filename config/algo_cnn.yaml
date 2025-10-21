@@ -1,0 +1,23 @@
+algo: cnn
+task_modes:
+  regression:
+    loss: mse
+  classification:
+    loss: binary_crossentropy
+training:
+  epochs: 20
+  batch_size: 128
+  learning_rate: 0.001
+  early_stopping:
+    enabled: false
+    patience: 5
+architecture:
+  conv_layers:
+  - filters: 64
+    kernel_size: 3
+  - filters: 64
+    kernel_size: 3
+  dense_units: 64
+sequence:
+  window: 20
+  stride: 1

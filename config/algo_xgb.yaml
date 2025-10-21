@@ -1,0 +1,12 @@
+algo: xgboost
+common:
+  n_estimators: 600
+  max_depth: 6
+  learning_rate: 0.05
+  subsample: 0.9
+  colsample_bytree: 0.9
+  random_state: 42
+regression: {}
+classification:
+  scale_pos_weight: auto
+  eval_metric: logloss

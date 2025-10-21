@@ -1,0 +1,20 @@
+algo: lstm
+task_modes:
+  regression:
+    loss: mse
+  classification:
+    loss: binary_crossentropy
+training:
+  epochs: 20
+  batch_size: 128
+  learning_rate: 0.001
+  early_stopping:
+    enabled: false
+    patience: 5
+architecture:
+  hidden_size: 64
+  num_layers: 2
+  dense_units: 64
+sequence:
+  window: 20
+  stride: 1
