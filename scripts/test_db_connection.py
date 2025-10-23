@@ -13,15 +13,15 @@ def build_engine():
     load_dotenv()  # reads .env in project root
     cfg = load_cfg()
 
-    driver = cfg.get("driver", "MS SQL Server")
-    server = os.getenv("DB_SERVER")
-    port = os.getenv("DB_PORT", "1433")
-    database = os.getenv("DB_NAME")
-    username = os.getenv("DB_USER")
-    password = os.getenv("DB_PASS")
+    driver = cfg.get("driver", "ODBC Driver 18 for SQL Server")
+    server = os.getenv("MSSQL_SERVER")
+    port = os.getenv("MSSQL_PORT")
+    database = os.getenv("MSSQL_DATABASE")
+    username = os.getenv("MSSQL_USERNAME")
+    password = os.getenv("MSSQL_PASSWORD")
 
     if not all([server, database, username, password]):
-        raise RuntimeError("Missing one or more env vars: DB_SERVER, DB_NAME, DB_USER, DB_PASS")
+        raise RuntimeError("Missing one or more env vars: MSSQL_SERVER, MSSQL_DATABASE, MSSQL_USERNAME, MSSQL_PASSWORD")
 
     odbc = (
     f"DRIVER={driver};SERVER={server};DATABASE={database};UID={username};PWD={password};"
@@ -65,7 +65,7 @@ def main():
         # Replace dbo.SensorOEE_View with your actual object, or comment this block out.
         try:
             sample = pd.read_sql_query(
-                text("SELECT TOP 5 * FROM dbo.SensorOEE_View ORDER BY 1"),
+                text("SELECT TOP 10 * FROM dbo.DM_Machine_Learning_Line_10 ORDER BY 1"),
                 conn
             )
             print(f"🔎 Sample rows from dbo.SensorOEE_View: {len(sample)}")

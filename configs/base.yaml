@@ -1,0 +1,6 @@
+random_seed: 42
+time_index: timestamp
+id_col: machine_id
+target_rul: RUL
+target_cof: CoF
+freq: 1min

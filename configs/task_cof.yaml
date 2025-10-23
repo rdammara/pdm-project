@@ -1,0 +1,8 @@
+task: CoF
+metrics:
+- f1
+- recall
+- roc_auc
+train_val_test_split:
+  method: time_series_split
+  n_splits: 3

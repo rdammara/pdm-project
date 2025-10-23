@@ -1,0 +1,10 @@
+task: RUL
+metrics:
+- rmse
+- mae
+- r2
+- nasa
+- silhouette
+train_val_test_split:
+  method: time_series_split
+  n_splits: 3
