@@ -1,5 +1,5 @@
 
-# 🧠 Predictive Maintenance (PDM) — PVC Extruder Line 10 & 20
+# Predictive Maintenance (PDM) — PVC Extruder Line 10 & 20
 
 This repository implements a **Predictive Maintenance (PDM)** system for PVC pipe extruder machines using both **Regression (RUL)** and **Classification (CoF)** approaches.
 
@@ -10,7 +10,7 @@ It follows the **CRISP-DM methodology**, and compares three machine learning alg
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
 
 ```
 pdm-project/
@@ -53,23 +53,23 @@ pdm-project/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 1️⃣ Create Environment
+### Create Environment
 ```bash
 python -m venv venv
 source venv/bin/activate  # (Windows: venv\Scripts\activate)
 pip install -r requirements.txt
 ```
 
-### 2️⃣ Prepare Data
+### Prepare Data
 Place your raw data here:
 ```
 data/raw/Line10/DM_Machine_Learning_Line_10.csv
 data/raw/Line20/DM_Machine_Learning_Line_20.csv
 ```
 
-### 3️⃣ Run the Pipeline
+### Run the Pipeline
 1. Open **`notebooks/00_overview.ipynb`** to initialize configs and folders.
 2. Run each phase:
    - **RUL**: notebooks in `/RUL`
@@ -78,7 +78,7 @@ data/raw/Line20/DM_Machine_Learning_Line_20.csv
 
 ---
 
-## 📊 Evaluation Metrics
+## Evaluation Metrics
 
 | Task | Algorithm | Metrics |
 |------|------------|----------|
@@ -87,7 +87,7 @@ data/raw/Line20/DM_Machine_Learning_Line_20.csv
 
 ---
 
-## 🧩 Key Features
+## Key Features
 
 - Consistent preprocessing and feature engineering across models  
 - Unified training + logging for reproducible experiments  
@@ -97,7 +97,7 @@ data/raw/Line20/DM_Machine_Learning_Line_20.csv
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork this repo  
 2. Create a feature branch (`feature/add-model-x`)  
