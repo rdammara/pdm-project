@@ -1,1 +1,2 @@
-timestamp,task,algo,line,seed,params_json,rmse,mae,r2,nasa,silhouette,f1,recall,roc_auc,dataset_hash,notes,artifact_dir
+timestamp,task,algo,line,seed,params_json,rmse,mae,r2,dataset_hash,notes,artifact_dir
+2025-11-16T00:47:57.746786,RUL,cnn,-1,42,"{""algo"": ""cnn"", ""window"": 20}",2385.801437672465,487.2801818847656,-56.11545944213867,,,
